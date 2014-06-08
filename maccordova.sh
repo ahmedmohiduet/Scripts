@@ -9,7 +9,8 @@ cd /usr/local/
 cordova create hello com.example.hello HelloWorld
 cd hello
 cordova platform add ios
-cordova platforms ls//see something like this .. ios 3.5.0
+cordova platforms ls
+#see something like this .. ios 3.5.0
 #install iphone emulator
 npm install -g ios-sim
 #build project
