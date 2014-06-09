@@ -11,3 +11,5 @@ ln -s /opt/apache-ant-1.9.4 /opt/ant
 ln -s /opt/ant/bin/ant /usr/bin/ant
 #add environment variable
 echo 'ANT_HOME=/opt/ant' >> /etc/environment
+#apply changes on current session
+source /etc/environment
