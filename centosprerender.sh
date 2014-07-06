@@ -1,4 +1,4 @@
-#install nodejs
+#install nodejs(Run "yum clean all && rpm --rebuilddb && yum update" in case yum can't find them)
 yum install nodejs
 #install nodejs's npm utility
 yum install npm
