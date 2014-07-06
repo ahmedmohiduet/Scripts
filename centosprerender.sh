@@ -14,3 +14,5 @@ npm install
 echo "node server.js >> \"prerender_log.txt\"" >> prerender_runner.sh
 #start prerender
 sh prerender_runner.sh &
+#check output
+tail -f prerender_log.txt
