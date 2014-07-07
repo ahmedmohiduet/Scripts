@@ -12,6 +12,8 @@ cd prerender/
 npm install
 #create runner and log file
 echo "node server.js >> \"prerender_log.txt\"" >> prerender_runner.sh
+#set to run at startup
+echo "sh /usr/local/prerender/prerender_runner.sh" >> /etc/rc.local
 #start prerender
 sh prerender_runner.sh &
 #check output
