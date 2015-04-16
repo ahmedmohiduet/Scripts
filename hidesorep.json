@@ -1,0 +1,21 @@
+{
+  "name": "hidesorep",
+  "description": "",
+  "version": "2.0",
+  "permissions": [
+    "activeTab"
+  ],
+  "background": {
+    "scripts": ["hidesorep.js"],
+    "persistent": false
+  },
+  "browser_action": {
+    "default_title": ""
+  },
+  "content_scripts": [ {
+    "matches": ["http://*/*"],
+    "js": ["jquery.min.js"]
+} ]
+  ,
+  "manifest_version": 2
+}
