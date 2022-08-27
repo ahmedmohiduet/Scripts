@@ -1,15 +1,14 @@
 curWinDec=`xdotool getactivewindow`
 curWinId=`printf 0x0%x "$curWinDec"`
+pcName=`hostname`
 
 echo "Current window Id: $curWinId"
-echo "Geting a list of all terminal windows..."
+echo "Getting a list of all terminal windows..."
 echo "Assuming shell windows titles would contain ~ and /"
-winIds=`wmctrl -lp|grep "~\|/"|grep -v " - Google Chrome"|grep -v " - Mozilla Firefox"|cut -d' ' -f 1`
+winIds=`wmctrl -lp|grep -v " $pcName Desktop"|grep "~\|/\|VIM"|grep -v " - Google Chrome"|grep -v " - Mozilla Firefox"|cut -d' ' -f 1`
 
 echo "Window list: $winIds"
-winCount=`echo $winIds|tr -cd ' \t' | wc -c`
-
-((winCount=winCount+1))
+winCount=`wmctrl -lp|grep -v " $pcName Desktop"|grep "~\|/\|VIM"|grep -v " - Google Chrome"|grep -v " - Mozilla Firefox"|cut -d' ' -f 1|wc -l`
 
 echo "Window count: $winCount"
 readarray -t <<<$winIds
