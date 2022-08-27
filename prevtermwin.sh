@@ -2,7 +2,8 @@ curWinDec=`xdotool getactivewindow`
 curWinId=`printf 0x0%x "$curWinDec"`
 
 echo "Current window Id: $curWinId"
-
+echo "Getting a list of all terminal windows..."
+echo "Assuming shell windows titles would contain ~ and /"
 winIds=`wmctrl -lp|grep -v " $pcName Desktop"|grep "~\|/\|VIM"|grep -v " - Google Chrome"|grep -v " - Mozilla Firefox"|cut -d' ' -f 1`
 
 echo "Window list: $winIds"
@@ -21,7 +22,7 @@ lastWindow="$winCount"
 
 ((lastWindow=lastWindow-1))
 
-if [ "0" = "$abc" ]; then echo "Cycling to last window..." && abc="$lastWindow";fi
+if [ "-1" = "$abc" ]; then echo "Cycling to last window..." && abc="$lastWindow";fi
 
 echo "Prev window index: $abc"
 echo "Navigating to... ${MAPFILE[$abc]}"
