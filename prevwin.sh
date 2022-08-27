@@ -3,11 +3,9 @@ curWinId=`printf 0x0%x "$curWinDec"`
 
 echo "Current window Id: $curWinId"
 winIds=`wmctrl -lp|grep " 0 "|cut -d' ' -f 1`
+winCount=`wmctrl -lp|grep " 0 "|cut -d' ' -f 1|wc -l`
 
 echo "Window list: $winIds"
-winCount=`echo $winIds|tr -cd ' \t' | wc -c`
-
-((winCount=winCount+1))
 
 echo "Window count: $winCount"
 readarray -t <<<$winIds
@@ -16,11 +14,11 @@ for i in {0..100};do if [ "${MAPFILE[$i]}" = "$curWinId" ]; then abc="$i" && bre
 
 ((abc=abc-1))
 
-lastWindow="$winCount"
+lastWindow=`echo "$winCount"`
 ((lastWindow=lastWindow-1))
 
 
-if [ "0" = "$abc" ]; then echo "Cycling to last window..." && abc="$lastWindow";fi
+if [ "-1" = "$abc" ]; then echo "Cycling to last window..." && abc="$lastWindow";fi
 
 echo "Prev window index: $abc"
 echo "Navigating to... ${MAPFILE[$abc]}"
